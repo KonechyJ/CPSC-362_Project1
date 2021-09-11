@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+        <title>Second Hand Items Auction House - {{ title }} </title>
+    {% else %}
+        <title>Second Hand Items Auction House</title>
+    {% endif %}
+</head>
+<body>
+    {% for post in posts %} <!--- this is a for loop format --->
+        <h1>{{ post.title }}</h1> <!--- this line creates the title from the list posts, the <h1> makes it bold --->
+        <p>By {{post.author }} on {{ post.date_posted }}</p><!--- <p> goes and prints the statement --->
+        <p>{{post.content }}</p>
+    {% endfor %}
+</body>
+</html>
+
+
+<!--- This is a comment --->
