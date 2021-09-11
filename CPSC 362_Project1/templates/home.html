@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% if title %}
-        <title>Second Hand Items Auction House - {{ title }} </title>
-    {% else %}
-        <title>Second Hand Items Auction House</title>
-    {% endif %}
-</head>
-<body>
+{% extends "Layout.html"%}
+{% block content %}
     {% for post in posts %} <!--- this is a for loop format --->
-        <h1>{{ post.title }}</h1> <!--- this line creates the title from the list posts, the <h1> makes it bold --->
-        <p>By {{post.author }} on {{ post.date_posted }}</p><!--- <p> goes and prints the statement --->
-        <p>{{post.content }}</p>
+                <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ post.author }}</a>
+              <small class="text-muted">{{ post.date_posted }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
     {% endfor %}
-</body>
-</html>
-
+{% endblock content %}
 
 <!--- This is a comment --->
