@@ -37,7 +37,8 @@
                 </div>
             </fieldset>
             <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
+                <!-- Change success to info on the line below to change the buttonback to blue -->
+                {{ form.submit(class="btn btn-outline-success") }}
                 <small class="text-muted ml-2">
                     <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
                 </small>

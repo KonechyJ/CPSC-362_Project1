@@ -198,3 +198,21 @@ def reset_token(token):
         flash('Your password has been updated! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+
+#===============Need to fix the routes to get the button to appear between the light and dark CSS buttons==============
+# ---Josh
+
+#@app.route('/')
+#def index():
+    #return render_template('index.html')
+
+#@app.route('/set-background/<mode>')
+#def set_background(mode):
+    #session['mode'] = mode
+    #return redirect(url_for('index'))
+
+#@app.route('/drop-session')
+#def drop_session():
+    #session.pop('mode', None)
+    #return redirect(url_for('index'))
