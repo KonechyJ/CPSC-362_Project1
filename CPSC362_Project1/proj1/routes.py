@@ -1,5 +1,7 @@
 import os
 import secrets
+import requests
+import json
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from proj1 import app, db, bcrypt, mail
@@ -20,7 +22,9 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template('about.html', title='About')
+    req = requests.get('https://fakestoreapi.com/products')
+    data = json.loads(req.content)
+    return render_template('about.html', data = data)
 
 
 @app.route("/register", methods=['GET', 'POST'])
