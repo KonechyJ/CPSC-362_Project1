@@ -57,11 +57,8 @@ class UpdateAccountForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    picture = FileField('Add image', validators=[FileAllowed(['jpg', 'png'])])
-    image = FileField('Image', validators=[FileAllowed(['jpg', 'png'],"We only accept JPG or PNG images.")])
-    title = StringField('Item Name', validators=[DataRequired()])
-    price = StringField('Price', validators=[DataRequired()])
-    content = TextAreaField('Description', validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired()])
+    content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
 
 class RequestResetForm(FlaskForm):
