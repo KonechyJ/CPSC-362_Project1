@@ -1,20 +1,67 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Products</h1>
-    <div class="card-container">
-        <div class="cards">
-            {%for i in range(20):%}
-            <div class="card" style="width:14rem;">
-                <div class="card-img"><img class="card-img-top rounded" src="{{data[i].image}}" alt="Card image cap"></div>
-                <div class="card-body flex-column">
-                    <h5 class="card-title">{{data[i].title}}</h5>
-                    <p class="card-text">${{data[i].price}}</p>
-                    <button class="buy-btn">Buy Now</button>
-                </div>
-            </div>
-            {%endfor%}
-        </div>
-    </div>
 
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
+
+<h2 style="text-align:left">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="CPSC-362_Project1/CPSC362_Project1/proj1/AboutImages/Josh2.jpg" alt="Josh" style="width:100%">
+      <div class="container">
+        <h2>Joshua Konechy</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>jane@example.com</p>
+        <button type="button" class="btn btn-success">Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Ryan" style="width:100%">
+      <div class="container">
+        <h2>Ryan Lamb</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>mike@example.com</p>
+        <button type="button" class="btn btn-success">Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team3.jpg" alt="Kevin" style="width:100%">
+      <div class="container">
+        <h2>Kevin La</h2>
+        <p class="title">Designer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>john@example.com</p>
+        <button type="button" class="btn btn-success">Contact</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Andy" style="width:100%">
+      <div class="container">
+        <h2>Andy Cao</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>mike@example.com</p>
+        <button type="button" class="btn btn-success">Contact</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
 
 {% endblock content %}

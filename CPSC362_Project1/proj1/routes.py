@@ -20,11 +20,15 @@ def home():
     return render_template('home.html', posts=posts)
 
 
-@app.route("/about")
-def about():
+@app.route("/products")
+def products():
     req = requests.get('https://fakestoreapi.com/products')
     data = json.loads(req.content)
-    return render_template('about.html', data = data)
+    return render_template('products.html', data = data)
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])
