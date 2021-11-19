@@ -3,13 +3,14 @@ import secrets
 import requests
 import json
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request, abort, session
+from flask import render_template, url_for, flash, redirect, request, abort, jsonify
 from proj1 import app, db, bcrypt, mail
 from proj1.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                              PostForm, RequestResetForm, ResetPasswordForm)
 from proj1.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
+
 
 
 @app.route("/")
@@ -20,11 +21,15 @@ def home():
     return render_template('home.html', posts=posts)
 
 
-@app.route("/about")
-def about():
+@app.route("/products")
+def products():
     req = requests.get('https://fakestoreapi.com/products')
     data = json.loads(req.content)
-    return render_template('about.html', data = data)
+    return render_template('products.html', data = data)
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -203,6 +208,63 @@ def reset_token(token):
         flash('Your password has been updated! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+
+
+
+
+#========================================================================================================================================================
+#===============================================START OF JOSHS REST API==================================================================================
+
+@app.route("/posts", methods=['GET'])
+def get():
+    return jsonify({'Posts':posts})
+
+
+@app.route("/posts/<int:Post_Number>", methods=['GET'])
+def PostNumebr(Post_Number):
+    return jsonify({'posts': posts[Post_Number]})
+
+@app.route("/posts", methods=['POST'])
+def create():
+    myNewPost =  {'Title': "Solid State Drive ",
+          'Post_Number': "4",
+          'Description': "A used Solid State Drive that Mr. Parker is selling on second hand goodies."}
+    posts.append(myNewPost)
+    return jsonify({'Created': myNewPost})
+
+
+@app.route("/posts/<int:Post_Number>", methods=['PUT'])
+def Post_Update(Post_Number):
+    posts[Post_Number] ['Description'] = "Iphone 11"
+    return jsonify({'myNewPost':posts[Post_Number]})
+
+@app.route("/posts/<int:Post_Number>", methods=['DELETE'])
+def Post_Delete(Post_Number):
+    posts.remove(posts[Post_Number])
+    return jsonify({'Results': True})
+
+
+posts = [{'Title': "Iphone x ",
+          'Post_Number': "0",
+          'Description': "A used Iphone X that Mrs. Jane Doe is selling on second hand goodies."},
+
+        {'Title': "Blue shirt ",
+          'Post_Number': "1",
+          'Description': "A used blue shirt that Mr. John Doe is selling on second hand goodies."},
+
+        {'Title': "Silver Bracelet",
+          'Post_Number': "2",
+          'Description': "A used Silver Bracelet that Professor X is selling on second hand goodies."},
+
+        {'Title': "Hard Disk Drive ",
+          'Post_Number': "3",
+          'Description': "A used Hard Disk Drive that Mr. Luthor is selling on second hand goodies."}
+        ]
+
+
+#========================================================================================================================================================
+#=================================================END OF JOSHS REST API==================================================================================
 
 
 #===============Need to fix the routes to get the button to appear between the light and dark CSS buttons==============
