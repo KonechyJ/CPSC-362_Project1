@@ -59,7 +59,6 @@ class UpdateAccountForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    price = StringField('Price', validators=[DataRequired()])
     submit = SubmitField('Post')
 
 class RequestResetForm(FlaskForm):
