@@ -6,8 +6,8 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort, jsonify, session
 from proj1 import app, db, bcrypt, mail
 from proj1.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                             PostForm, RequestResetForm, ResetPasswordForm)
-from proj1.models import User, Post
+                             PostForm, CartForm, RequestResetForm, ResetPasswordForm)
+from proj1.models import User, Post, Cart
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 
@@ -142,6 +142,32 @@ def update_post(post_id):
     return render_template('create_post.html', title='Update Post',
                            form=form, legend='Update Post')
 
+@app.route("/post/<int:post_id>/Add_Cart", methods=['GET', 'POST'])
+@login_required
+def Add_Cart(post_id):
+    cart = Post.query.get_or_404(post_id)
+    if cart.author != current_user:
+        abort(403)
+    db.create_all()
+    item = Cart(title=cart.title, price=cart.content, author=current_user)
+    db.session.add(item)
+    db.session.commit()
+    flash('Your Shopping Cart has been updated!', 'success')
+    return redirect(url_for('home', post_id=cart.id))
+
+@app.route("/ShoppingCart")
+def CartList():
+    carts = Cart.query.all()
+    return render_template('ShoppingList.html', carts=carts)
+
+@app.route("/ShoppingCart/<int:cart_id>/delete", methods=['GET', 'POST'])
+@login_required
+def delete_cart(cart_id):
+    item = Cart.query.get_or_404(cart_id)
+    db.session.delete(item)
+    db.session.commit()
+    flash('Your item has been deleted!', 'success')
+    return redirect(url_for('CartList'))
 
 @app.route("/post/<int:post_id>/delete", methods=['POST'])
 @login_required

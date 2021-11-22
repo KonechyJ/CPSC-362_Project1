@@ -60,6 +60,10 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
+class CartForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    price = TextAreaField('price', validators=[DataRequired()])
+    submit = SubmitField('Add Cart')
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email',
