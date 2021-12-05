@@ -1,1 +1,1 @@
-web: gunicorn run.py
+web: gunicorn CPSC362_Project1/run.py
