@@ -1,6 +1,7 @@
 import os
 import secrets
 import requests
+from requests.structures import CaseInsensitiveDict
 import json
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort, jsonify, session
@@ -26,6 +27,15 @@ def products():
     req = requests.get('https://fakestoreapi.com/products')
     data = json.loads(req.content)
     return render_template('products.html', data = data)
+
+@app.route("/spotify")
+def spotify():
+    headers = CaseInsensitiveDict()
+    headers["Accept"] = "application/json"
+    headers["Authorization"] = "Bearer y38fa8df5ad9402ebe4c131072cf4768"
+    req = requests.get('https://nitempo.herokuapp.com/post/get', headers = headers)
+    data = json.loads(req.content)
+    return render_template('spotify.html', data = data['posts'])
 
 @app.route("/about")
 def about():
