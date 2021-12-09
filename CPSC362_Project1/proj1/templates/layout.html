@@ -43,21 +43,16 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-              <a class="nav-item nav-link" href="{{ url_for('products') }}">Products</a>
-                <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
-
+              <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
+<!-- 
+            <a href="{{ url_for('set_background', mode='light') }}">Light Mode</a>
+            <a href="{{ url_for('set_background', mode='main.css') }}">Dark Mode</a> -->
               {% if current_user.is_authenticated %}
 <!--                 <input type="checkbox" id="cbx" style="display:none"/>
                 <label for="cbx" class="toggle"><span></span></label> -->
-                <label class="switch">
-                  <input type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-                <a href="{{ url_for('set_background', mode='light') }}">Light Mode</a>
-                <a href="{{ url_for('set_background', mode='dark') }}">Dark Mode</a>
                 <a class="nav-item nav-link" href="{{ url_for('CartList') }}">Cart</a>
                 <a class="nav-item nav-link" href="{{ url_for('new_post') }}">New Post</a>
                 <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
@@ -118,7 +113,7 @@
        <a href="{{ url_for('set_background', mode='light') }}">Light Mode</a>
 
           } else {
-              <a href="{{ url_for('set_background', mode='dark') }}">Dark Mode</a>
+    <a href="{{ url_for('set_background', mode='dark') }}">Dark Mode</a>
     }
   });
 });</script>

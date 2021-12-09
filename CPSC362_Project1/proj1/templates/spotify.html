@@ -4,11 +4,10 @@
     <div class="card-container">
         <div class="cards">
             {%for i in range(5):%}
-            <div class="card" style="width:14rem;">
+            <div class="card" style="width:40rem;">
                 <div class="card-body flex-column">
-                    <h5 class="card-title">{{data[i].userID}}</h5>
-                    <p class="card-text">${{data[i].description}}</p>
-                    <button type="button" class="btn btn-success">Read More</button>
+                    <h5 class="card-title">Author: <br> {{data[i].userID}}</h5>
+                    <p class="card-text">Description: <br> ${{data[i].description}}</p>
                 </div>
             </div>
             {%endfor%}
