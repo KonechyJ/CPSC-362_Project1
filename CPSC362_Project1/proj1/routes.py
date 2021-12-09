@@ -33,7 +33,8 @@ def spotify():
     headers = CaseInsensitiveDict()
     headers["Accept"] = "application/json"
     headers["Authorization"] = "Bearer y38fa8df5ad9402ebe4c131072cf4768"
-    req = requests.get('https://nitempo.herokuapp.com/post/get', headers = headers)
+    headers["Content-Type"] = "application/json"
+    req = requests.post('https://nitempo.herokuapp.com/post/get', headers = headers)
     data = json.loads(req.content)
     return render_template('spotify.html', data = data['posts'])
 
