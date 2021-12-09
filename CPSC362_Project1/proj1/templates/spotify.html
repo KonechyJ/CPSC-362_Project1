@@ -6,8 +6,10 @@
             {%for i in range(5):%}
             <div class="card" style="width:40rem;">
                 <div class="card-body flex-column">
-                    <h5 class="card-title">Author: <br> {{data[i].userID}}</h5>
-                    <p class="card-text">Description: <br> ${{data[i].description}}</p>
+                    <h5 class="card-title">Author: </h5>
+                    <h5 classh="card-title" style="color:black"> {{data[i].userID}} </h5>
+                    <p class="card-title">Description: </p>
+                    <p class="card-text" style="color:black" >${{data[i].description}}</p>
                 </div>
             </div>
             {%endfor%}
