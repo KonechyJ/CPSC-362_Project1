@@ -50,11 +50,13 @@
 <!--
             <a href="{{ url_for('set_background', mode='light') }}">Light Mode</a>
             <a href="{{ url_for('set_background', mode='main.css') }}">Dark Mode</a> -->
+              <a class="nav-item nav-link" href="{{ url_for('products') }}">Products</a>
+
               {% if current_user.is_authenticated %}
 <!--                 <input type="checkbox" id="cbx" style="display:none"/>
                 <label for="cbx" class="toggle"><span></span></label> -->
                 <a class="nav-item nav-link" href="{{ url_for('spotify') }}">Spotify</a>
-                <a class="nav-item nav-link" href="{{ url_for('products') }}">Products</a>
+
                 <a class="nav-item nav-link" href="{{ url_for('CartList') }}">Cart</a>
                 <a class="nav-item nav-link" href="{{ url_for('new_post') }}">New Post</a>
                 <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
