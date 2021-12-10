@@ -32,7 +32,7 @@ def products():
 def spotify():
     headers = CaseInsensitiveDict()
     headers["Accept"] = "application/json"
-    headers["Authorization"] = "Bearer y38fa8df5ad9402ebe4c131072cf4768"
+    headers["Authorization"] = "Bearer i2311241251235tjtfg3412512512j"
     headers["Content-Type"] = "application/json"
     req = requests.post('https://nitempo.herokuapp.com/post/get', headers = headers)
     data = json.loads(req.content)
